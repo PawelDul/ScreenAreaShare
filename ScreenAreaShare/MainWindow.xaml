@@ -1,0 +1,14 @@
+﻿<Window x:Class="ScreenAreaShare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScreenAreaShare"
+        mc:Ignorable="d"
+        Title="Screen Area Share" Height="450" Width="800" Activated="Window_Activated">
+    <Grid x:Name="gAll">
+        <Button x:Name="bSelectArea" Content="Select Area" Canvas.Left="81" Canvas.Top="119" Width="137" Height="59" Click="bSelectArea_Click"/>
+        <Image x:Name="pbScreenDisplay">            
+        </Image>
+    </Grid>
+</Window>
