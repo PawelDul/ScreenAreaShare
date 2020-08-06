@@ -39,7 +39,7 @@ namespace ScreenAreaCapture
     {
         public VirtualDesktopManager()
         {
-            _cmanager = new CVirtualDesktopManager();
+            _cmanager = new ScreenAreaCapture.CVirtualDesktopManager();
             _manager = (IVirtualDesktopManager) _cmanager;
         }
         ~VirtualDesktopManager()
@@ -50,11 +50,11 @@ namespace ScreenAreaCapture
         private CVirtualDesktopManager _cmanager;
         private IVirtualDesktopManager _manager;
 
-        public bool IsWindowOnCurrentVirtualDesktop(IntPtr topLevelWindow)
+        public bool IsWindowOnCurrentVirtualDesktop(IntPtr TopLevelWindow)
         {
             int result;
             int hr;
-            if ((hr = _manager.IsWindowOnCurrentVirtualDesktop(topLevelWindow, out result)) != 0)
+            if ((hr = _manager.IsWindowOnCurrentVirtualDesktop(TopLevelWindow, out result)) != 0)
             {
                 Marshal.ThrowExceptionForHR(hr);
             }
@@ -63,8 +63,9 @@ namespace ScreenAreaCapture
 
         public Guid GetWindowDesktopId(IntPtr topLevelWindow)
         {
+            Guid result;
             int hr;
-            if ((hr = _manager.GetWindowDesktopId(topLevelWindow, out var result)) != 0)
+            if ((hr = _manager.GetWindowDesktopId(topLevelWindow, out result)) != 0)
             {
                 Marshal.ThrowExceptionForHR(hr);
             }

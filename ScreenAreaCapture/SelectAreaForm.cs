@@ -6,7 +6,7 @@ namespace ScreenAreaCapture
 {
     public partial class SelectAreaForm : Form
     {
-        private enum CursPos : int
+        private enum CursPos
         {
 
             WithinSelectionArea = 0,
@@ -21,7 +21,7 @@ namespace ScreenAreaCapture
             BottomRight
         }
 
-        private enum ClickAction : int
+        private enum ClickAction
         {
 
             NoClick = 0,
@@ -62,7 +62,6 @@ namespace ScreenAreaCapture
             this.MouseUp += new MouseEventHandler(OnMouseUp);
             this.MouseMove += new MouseEventHandler(OnMouseMove);
             graphics = this.CreateGraphics();
-            var aresolution = Screen.AllScreens;
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
@@ -132,72 +131,72 @@ namespace ScreenAreaCapture
 
         private CursPos CursorPosition()
         {
-            if (((Cursor.Position.X > CurrentTopLeft.X - 10 && Cursor.Position.X < CurrentTopLeft.X + 10)) && ((Cursor.Position.Y > CurrentTopLeft.Y + 10) && (Cursor.Position.Y < CurrentBottomRight.Y - 10)))
+            if (Cursor.Position.X > CurrentTopLeft.X - 10 && Cursor.Position.X < CurrentTopLeft.X + 10 && ((Cursor.Position.Y > CurrentTopLeft.Y + 10) && (Cursor.Position.Y < CurrentBottomRight.Y - 10)))
             {
 
-                this.Cursor = Cursors.SizeWE;
+                Cursor = Cursors.SizeWE;
                 return CursPos.LeftLine;
 
             }
-            if (((Cursor.Position.X >= CurrentTopLeft.X - 10 && Cursor.Position.X <= CurrentTopLeft.X + 10)) && ((Cursor.Position.Y >= CurrentTopLeft.Y - 10) && (Cursor.Position.Y <= CurrentTopLeft.Y + 10)))
+            if (Cursor.Position.X >= CurrentTopLeft.X - 10 && Cursor.Position.X <= CurrentTopLeft.X + 10 && ((Cursor.Position.Y >= CurrentTopLeft.Y - 10) && (Cursor.Position.Y <= CurrentTopLeft.Y + 10)))
             {
 
-                this.Cursor = Cursors.SizeNWSE;
+                Cursor = Cursors.SizeNWSE;
                 return CursPos.TopLeft;
 
             }
-            if (((Cursor.Position.X >= CurrentTopLeft.X - 10 && Cursor.Position.X <= CurrentTopLeft.X + 10)) && ((Cursor.Position.Y >= CurrentBottomRight.Y - 10) && (Cursor.Position.Y <= CurrentBottomRight.Y + 10)))
+            if (Cursor.Position.X >= CurrentTopLeft.X - 10 && Cursor.Position.X <= CurrentTopLeft.X + 10 && ((Cursor.Position.Y >= CurrentBottomRight.Y - 10) && (Cursor.Position.Y <= CurrentBottomRight.Y + 10)))
             {
 
-                this.Cursor = Cursors.SizeNESW;
+                Cursor = Cursors.SizeNESW;
                 return CursPos.BottomLeft;
 
             }
-            if (((Cursor.Position.X > CurrentBottomRight.X - 10 && Cursor.Position.X < CurrentBottomRight.X + 10)) && ((Cursor.Position.Y > CurrentTopLeft.Y + 10) && (Cursor.Position.Y < CurrentBottomRight.Y - 10)))
+            if (Cursor.Position.X > CurrentBottomRight.X - 10 && Cursor.Position.X < CurrentBottomRight.X + 10 && (Cursor.Position.Y > CurrentTopLeft.Y + 10) && Cursor.Position.Y < CurrentBottomRight.Y - 10)
             {
 
-                this.Cursor = Cursors.SizeWE;
+                Cursor = Cursors.SizeWE;
                 return CursPos.RightLine;
 
             }
-            if (((Cursor.Position.X >= CurrentBottomRight.X - 10 && Cursor.Position.X <= CurrentBottomRight.X + 10)) && ((Cursor.Position.Y >= CurrentTopLeft.Y - 10) && (Cursor.Position.Y <= CurrentTopLeft.Y + 10)))
+            if (Cursor.Position.X >= CurrentBottomRight.X - 10 && Cursor.Position.X <= CurrentBottomRight.X + 10 && (Cursor.Position.Y >= CurrentTopLeft.Y - 10) && Cursor.Position.Y <= CurrentTopLeft.Y + 10)
             {
 
-                this.Cursor = Cursors.SizeNESW;
+                Cursor = Cursors.SizeNESW;
                 return CursPos.TopRight;
 
             }
-            if (((Cursor.Position.X >= CurrentBottomRight.X - 10 && Cursor.Position.X <= CurrentBottomRight.X + 10)) && ((Cursor.Position.Y >= CurrentBottomRight.Y - 10) && (Cursor.Position.Y <= CurrentBottomRight.Y + 10)))
+            if (Cursor.Position.X >= CurrentBottomRight.X - 10 && Cursor.Position.X <= CurrentBottomRight.X + 10 && (Cursor.Position.Y >= CurrentBottomRight.Y - 10) && Cursor.Position.Y <= CurrentBottomRight.Y + 10)
             {
 
-                this.Cursor = Cursors.SizeNWSE;
+                Cursor = Cursors.SizeNWSE;
                 return CursPos.BottomRight;
 
             }
-            if (((Cursor.Position.Y > CurrentTopLeft.Y - 10) && (Cursor.Position.Y < CurrentTopLeft.Y + 10)) && ((Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.X < CurrentBottomRight.X - 10)))
+            if (Cursor.Position.Y > CurrentTopLeft.Y - 10 && (Cursor.Position.Y < CurrentTopLeft.Y + 10) && Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.X < CurrentBottomRight.X - 10)
             {
 
-                this.Cursor = Cursors.SizeNS;
+                Cursor = Cursors.SizeNS;
                 return CursPos.TopLine;
 
             }
-            if (((Cursor.Position.Y > CurrentBottomRight.Y - 10) && (Cursor.Position.Y < CurrentBottomRight.Y + 10)) && ((Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.X < CurrentBottomRight.X - 10)))
+            if (Cursor.Position.Y > CurrentBottomRight.Y - 10 && (Cursor.Position.Y < CurrentBottomRight.Y + 10) && Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.X < CurrentBottomRight.X - 10)
             {
 
-                this.Cursor = Cursors.SizeNS;
+                Cursor = Cursors.SizeNS;
                 return CursPos.BottomLine;
 
             }
             if (
-                (Cursor.Position.X >= CurrentTopLeft.X + 10 && Cursor.Position.X <= CurrentBottomRight.X - 10) && (Cursor.Position.Y >= CurrentTopLeft.Y + 10 && Cursor.Position.Y <= CurrentBottomRight.Y - 10))
+                Cursor.Position.X >= CurrentTopLeft.X + 10 && Cursor.Position.X <= CurrentBottomRight.X - 10 && Cursor.Position.Y >= CurrentTopLeft.Y + 10 && Cursor.Position.Y <= CurrentBottomRight.Y - 10)
             {
 
-                this.Cursor = Cursors.Hand;
+                Cursor = Cursors.Hand;
                 return CursPos.WithinSelectionArea;
 
             }
 
-            this.Cursor = Cursors.No;
+            Cursor = Cursors.No;
             return CursPos.OutsideSelectionArea;
         }
 
@@ -242,107 +241,113 @@ namespace ScreenAreaCapture
 
         private void ResizeSelection()
         {
-            if (CurrentAction == ClickAction.LeftSizing)
+            switch (CurrentAction)
             {
-                if (Cursor.Position.X < CurrentBottomRight.X - 10)
-                {
+                case ClickAction.LeftSizing when Cursor.Position.X < CurrentBottomRight.X - 10:
                     //Erase the previous rectangle
                     graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
                     CurrentTopLeft.X = Cursor.Position.X;
                     RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
                     graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
-                }
-            }
-
-            if (CurrentAction == ClickAction.TopLeftSizing)
-            {
-                if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10)
+                    break;
+                case ClickAction.TopLeftSizing:
                 {
-                    //Erase the previous rectangle
-                    graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
-                    CurrentTopLeft.X = Cursor.Position.X;
-                    CurrentTopLeft.Y = Cursor.Position.Y;
-                    RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
-                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
-                }
-            }
+                    if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10)
+                    {
+                        //Erase the previous rectangle
+                        graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                        CurrentTopLeft.X = Cursor.Position.X;
+                        CurrentTopLeft.Y = Cursor.Position.Y;
+                        RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
+                        RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                        graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    }
 
-            if (CurrentAction == ClickAction.BottomLeftSizing)
-            {
-                if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10)
-                {
-                    //Erase the previous rectangle
-                    graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
-                    CurrentTopLeft.X = Cursor.Position.X;
-                    CurrentBottomRight.Y = Cursor.Position.Y;
-                    RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
-                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    break;
                 }
-            }
-
-            if (CurrentAction == ClickAction.RightSizing)
-            {
-                if (Cursor.Position.X > CurrentTopLeft.X + 10)
+                case ClickAction.BottomLeftSizing:
                 {
-                    //Erase the previous rectangle
-                    graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
-                    CurrentBottomRight.X = Cursor.Position.X;
-                    RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
-                    graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    if (Cursor.Position.X < CurrentBottomRight.X - 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10)
+                    {
+                        //Erase the previous rectangle
+                        graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                        CurrentTopLeft.X = Cursor.Position.X;
+                        CurrentBottomRight.Y = Cursor.Position.Y;
+                        RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
+                        RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                        graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    }
+
+                    break;
                 }
-            }
-
-            if (CurrentAction == ClickAction.TopRightSizing)
-            {
-                if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10)
+                case ClickAction.RightSizing:
                 {
-                    //Erase the previous rectangle
-                    graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
-                    CurrentBottomRight.X = Cursor.Position.X;
-                    CurrentTopLeft.Y = Cursor.Position.Y;
-                    RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
-                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    if (Cursor.Position.X > CurrentTopLeft.X + 10)
+                    {
+                        //Erase the previous rectangle
+                        graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                        CurrentBottomRight.X = Cursor.Position.X;
+                        RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
+                        graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    }
+
+                    break;
                 }
-            }
-
-            if (CurrentAction == ClickAction.BottomRightSizing)
-            {
-                if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10)
+                case ClickAction.TopRightSizing:
                 {
-                    //Erase the previous rectangle
-                    graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
-                    CurrentBottomRight.X = Cursor.Position.X;
-                    CurrentBottomRight.Y = Cursor.Position.Y;
-                    RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
-                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y < CurrentBottomRight.Y - 10)
+                    {
+                        //Erase the previous rectangle
+                        graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                        CurrentBottomRight.X = Cursor.Position.X;
+                        CurrentTopLeft.Y = Cursor.Position.Y;
+                        RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
+                        RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                        graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    }
+
+                    break;
                 }
-            }
-
-            if (CurrentAction == ClickAction.TopSizing)
-            {
-                if (Cursor.Position.Y < CurrentBottomRight.Y - 10)
+                case ClickAction.BottomRightSizing:
                 {
-                    //Erase the previous rectangle
-                    graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
-                    CurrentTopLeft.Y = Cursor.Position.Y;
-                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    if (Cursor.Position.X > CurrentTopLeft.X + 10 && Cursor.Position.Y > CurrentTopLeft.Y + 10)
+                    {
+                        //Erase the previous rectangle
+                        graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                        CurrentBottomRight.X = Cursor.Position.X;
+                        CurrentBottomRight.Y = Cursor.Position.Y;
+                        RectangleWidth = CurrentBottomRight.X - CurrentTopLeft.X;
+                        RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                        graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    }
+
+                    break;
                 }
-            }
-
-            if (CurrentAction == ClickAction.BottomSizing)
-            {
-                if (Cursor.Position.Y > CurrentTopLeft.Y + 10)
+                case ClickAction.TopSizing:
                 {
-                    //Erase the previous rectangle
-                    graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
-                    CurrentBottomRight.Y = Cursor.Position.Y;
-                    RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
-                    graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    if (Cursor.Position.Y < CurrentBottomRight.Y - 10)
+                    {
+                        //Erase the previous rectangle
+                        graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                        CurrentTopLeft.Y = Cursor.Position.Y;
+                        RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                        graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    }
+
+                    break;
+                }
+                case ClickAction.BottomSizing:
+                {
+                    if (Cursor.Position.Y > CurrentTopLeft.Y + 10)
+                    {
+                        //Erase the previous rectangle
+                        graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                        CurrentBottomRight.Y = Cursor.Position.Y;
+                        RectangleHeight = CurrentBottomRight.Y - CurrentTopLeft.Y;
+                        graphics.DrawRectangle(MyPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
+                    }
+
+                    break;
                 }
             }
         }
@@ -353,10 +358,6 @@ namespace ScreenAreaCapture
 
             //Erase the previous rectangle
             graphics.DrawRectangle(EraserPen, CurrentTopLeft.X, CurrentTopLeft.Y, RectangleWidth, RectangleHeight);
-
-            // if primary
-            var ifPrimary = Cursor.Position.X - DragClickRelative.X + RectangleWidth <
-                            Screen.PrimaryScreen.Bounds.Width;
 
             if (Cursor.Position.X - DragClickRelative.X > 0 && Cursor.Position.X - DragClickRelative.X + RectangleWidth < System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width)
             {

@@ -43,17 +43,14 @@ namespace ScreenAreaCapture
             tPicture.Start();
 
             //resize
-            var width = (decimal)this.Width;
             var pictureWidth = (decimal)pbScreenDisplay.Width;
             var height = (decimal)this.Height;
             var pictureHeight = (decimal)pbScreenDisplay.Height;
             var areaWidth = (decimal)captureSize.Width;
             var areaHeigth = (decimal)captureSize.Height;
 
-            var widthPadding = (width - pictureWidth);
             var heightPadding = (height - pictureHeight);
 
-            var widthRatio = pictureWidth / areaWidth;
             var areaRatio = areaWidth / areaHeigth;
             var newPictureHeight = pictureWidth / areaRatio;
             this.Height = Convert.ToInt32(decimal.Round(newPictureHeight + heightPadding));
@@ -75,7 +72,7 @@ namespace ScreenAreaCapture
             startCapture.Visible = false;
         }
 
-        private async void VDCheckTimer_Tick(object sender, EventArgs e)
+        private void VDCheckTimer_Tick(object sender, EventArgs e)
         {
             try
             {
