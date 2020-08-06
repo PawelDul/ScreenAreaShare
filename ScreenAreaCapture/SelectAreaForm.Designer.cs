@@ -1,4 +1,5 @@
-﻿namespace WindowsFormsApp1
+﻿
+namespace ScreenAreaCapture
 {
     partial class SelectAreaForm
     {
@@ -42,7 +43,6 @@
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
-
         }
 
         #endregion

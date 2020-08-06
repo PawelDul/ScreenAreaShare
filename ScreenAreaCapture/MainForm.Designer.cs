@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace ScreenAreaCapture
 {
     partial class MainForm
     {
@@ -6,6 +6,7 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.Timer VDCheckTimer;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -73,6 +74,12 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbScreenDisplay)).EndInit();
             this.ResumeLayout(false);
+
+            this.components = new System.ComponentModel.Container();
+            this.VDCheckTimer = new System.Windows.Forms.Timer(this.components);
+            this.VDCheckTimer.Enabled = true;
+            this.VDCheckTimer.Interval = 1000;
+            this.VDCheckTimer.Tick += new System.EventHandler(this.VDCheckTimer_Tick);
 
         }
 

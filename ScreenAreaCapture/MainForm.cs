@@ -2,13 +2,16 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace ScreenAreaCapture
 {
     public partial class MainForm : Form
     {
         private Point topLeftPoint;
         private Size captureSize;
         private Graphics captureGraphics;
+        private VirtualDesktopManager vdm;
+        NewWindow _nw;
+        private bool _isWindowMoved = false;
 
         public MainForm()
         {
@@ -17,7 +20,7 @@ namespace WindowsFormsApp1
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
+            vdm = new VirtualDesktopManager();
         }
 
         public void OnAreaSelected(Point topLeft, Point bottomRight, SelectAreaForm frm)
@@ -26,7 +29,7 @@ namespace WindowsFormsApp1
             captureSize = new Size(bottomRight.X - topLeft.X, bottomRight.Y - topLeft.Y);
 
             frm.Close();
-            
+
             this.Show();
             StartCapturing();
         }
@@ -71,5 +74,26 @@ namespace WindowsFormsApp1
             frm.Show();
             startCapture.Visible = false;
         }
+
+        private async void VDCheckTimer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (vdm.IsWindowOnCurrentVirtualDesktop(Handle)) return;
+                if (_isWindowMoved) return;
+                using (_nw = new NewWindow())
+                {
+                    _nw.Show(null);
+                    vdm.MoveWindowToDesktop(Handle, vdm.GetWindowDesktopId(_nw.Handle));
+                    _isWindowMoved = true;
+                }
+            }
+            catch
+            {
+                //This will fail due to race conditions as currently written on occassion
+            }
+        }
     }
+
+
 }

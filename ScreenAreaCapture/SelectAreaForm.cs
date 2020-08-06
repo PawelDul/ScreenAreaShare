@@ -1,7 +1,8 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace ScreenAreaCapture
 {
     public partial class SelectAreaForm : Form
     {
@@ -51,7 +52,6 @@ namespace WindowsFormsApp1
         private Graphics graphics;
         private Pen MyPen = new Pen(Color.Black, 1);
         private Pen EraserPen = new Pen(Color.FromArgb(255, 255, 192), 1);
-
         public MainForm InstanceRef { get; set; }
 
         public SelectAreaForm()
@@ -63,7 +63,6 @@ namespace WindowsFormsApp1
             this.MouseMove += new MouseEventHandler(OnMouseMove);
             graphics = this.CreateGraphics();
             var aresolution = Screen.AllScreens;
-
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
